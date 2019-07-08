@@ -9,6 +9,8 @@
       <span>{{selectedFilm.genre_ids.map((id)=>genreById(id).name).join(', ')}}</span>
     </div>
     <p>{{selectedFilm.overview}}</p>
+
+    <router-link :to="'/film/'+selectedFilm.id">Detail</router-link>|
     <a
       :href="'https://www.youtube.com/results?search_query=trailer+' + selectedFilm.title"
       target="_blank"
@@ -22,8 +24,7 @@ export default {
   name: "FilmDisplayInfo",
   props: ["selectedFilm"],
   methods: {
-    ...mapActions(["fetchGenres", "youtubeSearch"]),
-    youtubeSearch(title) {}
+    ...mapActions(["fetchGenres", "youtubeSearch"])
   },
   computed: {
     ...mapGetters(["genreById"])
